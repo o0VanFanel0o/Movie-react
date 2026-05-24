@@ -1,0 +1,11 @@
+.floating-nav {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: darkslategrey;
+    padding: 1rem;
+    border-radius: 20px;
+}

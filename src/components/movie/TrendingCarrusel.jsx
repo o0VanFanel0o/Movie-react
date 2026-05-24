@@ -1,8 +1,15 @@
+import MovieCard from "./MovieCard";
+
 const TrendingCarrusel = () => {
     return (
         <section>
             <h2>Trending Movies</h2>
-            <div></div>
+            <div>
+                <MovieCard/>
+                <MovieCard/>
+                <MovieCard/>
+                <MovieCard/>
+            </div>
         </section>
     );
 };

@@ -1,9 +1,9 @@
 import "../../styles/MovieCard.css"
 
-const MovieCard = ({movie}) => {
+const MovieCard = ({movie, onClick}) => {
     const IMAGE_URL = "https://image.tmdb.org/t/p/w500"
     return (
-        <article className="movie-card">
+        <article className="movie-card" onClick={onClick}>
             <img
                 className="movie-poster"
                 src={`${IMAGE_URL}${movie.poster_path}`}

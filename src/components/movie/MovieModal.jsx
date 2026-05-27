@@ -1,4 +1,4 @@
-import "../../styles/MovieModal"
+import "../../styles/MovieModal.css"
 
 const MovieModal = ({ movie, onclose}) => {
     if (!movie) return null

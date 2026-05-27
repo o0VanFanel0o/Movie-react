@@ -2,10 +2,12 @@ import MovieCard from "./MovieCard";
 import "../../styles/TrendingCarrusel.css"
 import { useEffect, useState } from "react";
 import {getTrendingMovies} from "../../services/api"
+import MovieModal from "./MovieModal";
 
 const TrendingCarrusel = () => {
 
     const [movies, setMovies] = useState([])
+    const [selectedMovie, setSelectedMovie] = useState(null)
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -14,6 +16,10 @@ const TrendingCarrusel = () => {
         }
         fetchMovies()
     }, [])
+
+    const handleMovieClick = (movie) => {
+        setSelectedMovie(movie)
+    }
 
 
 
@@ -28,9 +34,11 @@ const TrendingCarrusel = () => {
                     <MovieCard
                         key={movie.id}
                         movie={movie}
+                        onClick={() => handleMovieClick(movie)}
                     />
                 ))}
             </div>
+            <MovieModal movie={selectedMovie} onclose={() => setSelectedMovie(null)}/>
         </section>
     );
 };

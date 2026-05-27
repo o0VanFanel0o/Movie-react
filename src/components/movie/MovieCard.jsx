@@ -6,7 +6,7 @@ const MovieCard = ({movie}) => {
         <article className="movie-card">
             <img
                 className="movie-poster"
-                src={movie.poster_path ? `${IMAGE_URL}${movie.poster_path}` : ""}
+                src={`${IMAGE_URL}${movie.poster_path}`}
                 alt={movie.title}
             />
             <div className="movie-info">

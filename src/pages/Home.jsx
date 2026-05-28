@@ -7,7 +7,7 @@ import FloatingNav from "../components/navigation/FloatingNav.jsx";
 import "../styles/home.css";
 
 const Home = () => {
-    const {search, setSearch} = useState("")
+    const [search, setSearch] = useState("")
 
     return (
         <div className="home">

@@ -1,21 +1,27 @@
 import MovieCard from "./MovieCard";
 import "../../styles/TrendingCarrusel.css"
 import { useEffect, useState } from "react";
-import {getTrendingMovies} from "../../services/api"
+import {getTrendingMovies, searchMovies} from "../../services/api"
 import MovieModal from "./MovieModal";
 
-const TrendingCarrusel = () => {
+
+const TrendingCarrusel = ({search}) => {
 
     const [movies, setMovies] = useState([])
     const [selectedMovie, setSelectedMovie] = useState(null)
 
     useEffect(() => {
         const fetchMovies = async () => {
-            const trendingMovies = await getTrendingMovies()
-            setMovies(trendingMovies)
+            if (!search?.trim()) { 
+                const trendingMovies = await getTrendingMovies()
+                setMovies(trendingMovies)
+            }else{
+                const searchedMovies = await searchMovies(search)
+                setMovies(searchedMovies)
+            }
         }
         fetchMovies()
-    }, [])
+    }, [search])
 
     const handleMovieClick = (movie) => {
         setSelectedMovie(movie)

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import SearchBar from "../navigation/SearchBar";
 import Favorites from "../navigation/Favorites";
@@ -10,7 +11,9 @@ const FloatingNav = ({search, setSearch, favorites}) => {
 
     return (
         <nav className="floating-nav">
-            <button>Home</button>
+            <Link to="/">
+                <button>Home</button>
+            </Link>
             <button onClick={() => setShowSearch(! showSearch)}>Buscar</button>
             <Favorites favorites={favorites}/>
             {

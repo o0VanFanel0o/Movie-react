@@ -5,12 +5,17 @@ import {getTrendingMovies, searchMovies} from "../../services/api"
 import MovieModal from "./MovieModal";
 
 
-const TrendingCarrusel = ({ search, favorites, toggleFavorite }) => {
+const TrendingCarrusel = ({ search, movies: externalMovies, title = "Trending Movies", favorites, toggleFavorite }) => {
 
     const [movies, setMovies] = useState([])
     const [selectedMovie, setSelectedMovie] = useState(null)
 
     useEffect(() => {
+        if (externalMovies !== undefined) {
+            setMovies(externalMovies)
+            return
+        }
+
         const fetchMovies = async () => {
             if (!search?.trim()) { 
                 const trendingMovies = await getTrendingMovies()
@@ -21,7 +26,7 @@ const TrendingCarrusel = ({ search, favorites, toggleFavorite }) => {
             }
         }
         fetchMovies()
-    }, [search])
+    }, [search, externalMovies])
 
     const handleMovieClick = (movie) => {
         setSelectedMovie(movie)
@@ -33,7 +38,7 @@ const TrendingCarrusel = ({ search, favorites, toggleFavorite }) => {
     return (
         <section className="trending-section">
             <div className="section-header">
-                <h2>Trending Movies</h2>
+                <h2>{title}</h2>
             </div>
             <div className="movie-row">
                 {movies.map((movie) => (

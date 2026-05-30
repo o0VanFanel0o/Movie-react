@@ -1,26 +1,18 @@
-import FloatingNav from "../components/navigation/FloatingNav"
+import TrendingCarrusel from "../components/movie/TrendingCarrusel.jsx"
+import FloatingNav from "../components/navigation/FloatingNav.jsx"
+import "../styles/home.css"
 
-const FavoritesPage = ({ favorites = [], toggleFavorite }) => {
+const FavoritesPage = ({ search, setSearch, favorites, toggleFavorite }) => {
     return (
-        <div>
-            <FloatingNav favorites={favorites} />
+        <div className="home">
             <h1>Favorites</h1>
-            {favorites.length === 0 ? (
-                <p>No tienes favoritos aún</p>
-            ) : (
-                <ul>
-                    {favorites.map((movie) => (
-                        <li key={movie.id}>
-                            <span>{movie.title}</span>
-                            {toggleFavorite && (
-                                <button onClick={() => toggleFavorite(movie)}>
-                                    Quitar
-                                </button>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            )}
+            <TrendingCarrusel
+                movies={favorites}
+                title="Favorites"
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+            />
+            <FloatingNav search={search} setSearch={setSearch} favorites={favorites} />
         </div>
     )
 }

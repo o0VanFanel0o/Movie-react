@@ -42,6 +42,8 @@ function App() {
         path="/favorites"
         element={
           <FavoritesPage
+            search={search}
+            setSearch={setSearch}
             favorites={favorites}
             toggleFavorite={toggleFavorite}
           />

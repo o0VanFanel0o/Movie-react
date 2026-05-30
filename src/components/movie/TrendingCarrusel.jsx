@@ -5,7 +5,7 @@ import {getTrendingMovies, searchMovies} from "../../services/api"
 import MovieModal from "./MovieModal";
 
 
-const TrendingCarrusel = ({search}) => {
+const TrendingCarrusel = ({ search, favorites, toggleFavorite }) => {
 
     const [movies, setMovies] = useState([])
     const [selectedMovie, setSelectedMovie] = useState(null)
@@ -44,7 +44,12 @@ const TrendingCarrusel = ({search}) => {
                     />
                 ))}
             </div>
-            <MovieModal movie={selectedMovie} onclose={() => setSelectedMovie(null)}/>
+            <MovieModal
+                movie={selectedMovie}
+                onclose={() => setSelectedMovie(null)}
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+            />
         </section>
     );
 };

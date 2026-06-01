@@ -11,26 +11,25 @@ const TrendingCarrusel = ({ search, movies: externalMovies, title = "Trending Mo
     const [selectedMovie, setSelectedMovie] = useState(null)
 
     useEffect(() => {
-        if (externalMovies !== undefined) {
-            setMovies(externalMovies)
-            return
-        }
-
+        if (externalMovies !== undefined) return
+    
         const fetchMovies = async () => {
             if (!search?.trim()) { 
                 const trendingMovies = await getTrendingMovies()
                 setMovies(trendingMovies)
-            }else{
+            } else {
                 const searchedMovies = await searchMovies(search)
                 setMovies(searchedMovies)
             }
         }
+    
         fetchMovies()
     }, [search, externalMovies])
 
     const handleMovieClick = (movie) => {
         setSelectedMovie(movie)
     }
+    const displayedMovies = externalMovies ?? movies
 
 
 
@@ -41,7 +40,7 @@ const TrendingCarrusel = ({ search, movies: externalMovies, title = "Trending Mo
                 <h2>{title}</h2>
             </div>
             <div className="movie-row">
-                {movies.map((movie) => (
+                {displayedMovies.map((movie) => (
                     <MovieCard
                         key={movie.id}
                         movie={movie}

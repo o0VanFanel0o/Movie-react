@@ -9,20 +9,31 @@ const TrendingCarrusel = ({ search, movies: externalMovies, title = "Trending Mo
 
     const [movies, setMovies] = useState([])
     const [selectedMovie, setSelectedMovie] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState("")
 
     useEffect(() => {
         if (externalMovies !== undefined) return
     
         const fetchMovies = async () => {
-            if (!search?.trim()) { 
-                const trendingMovies = await getTrendingMovies()
-                setMovies(trendingMovies)
-            } else {
-                const searchedMovies = await searchMovies(search)
-                setMovies(searchedMovies)
+            try {
+                setLoading(true)
+                setError("")
+                if (!search?.trim()) { 
+                    const trendingMovies = await getTrendingMovies()
+                    setMovies(trendingMovies)
+                } else {
+                    const searchedMovies = await searchMovies(search)
+                    setMovies(searchedMovies)
+                }
+            } catch (error) {
+                console.error("Something went wrong:", error)
+                setError("Something went wrong: " + error.message)
+                setMovies([])
+            } finally {
+                setLoading(false)
             }
         }
-    
         fetchMovies()
     }, [search, externalMovies])
 
@@ -40,13 +51,20 @@ const TrendingCarrusel = ({ search, movies: externalMovies, title = "Trending Mo
                 <h2>{title}</h2>
             </div>
             <div className="movie-row">
-                {displayedMovies.map((movie) => (
-                    <MovieCard
-                        key={movie.id}
-                        movie={movie}
-                        onClick={() => handleMovieClick(movie)}
-                    />
-                ))}
+                {loading && <div className="loading">Loading...</div>}
+                {error && <div className="error">{error}</div>}
+                {!loading && !error && displayedMovies.length === 0 && (<div className="no-movies">No movies found</div>)}
+                {!loading && !error && displayedMovies.length > 0 && (
+                    <div className="movie-row">
+                        {displayedMovies.map((movie) => (
+                            <MovieCard
+                                key={movie.id}
+                                movie={movie}
+                                onClick={() => handleMovieClick(movie)}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
             <MovieModal
                 movie={selectedMovie}

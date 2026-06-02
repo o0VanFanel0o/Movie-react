@@ -18,3 +18,5 @@ const FavoritesPage = ({ search, setSearch, favorites, toggleFavorite }) => {
 }
 
 export default FavoritesPage
+
+

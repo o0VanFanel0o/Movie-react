@@ -7,8 +7,13 @@ import FavoritesPage from "./pages/FavoritesPage.jsx"
 function App() {
   const [search, setSearch] = useState("")
   const [favorites, setFavorites] = useState(() => {
-    const savedFavorites = localStorage.getItem("favorites")
-    return savedFavorites ? JSON.parse(savedFavorites) : []
+    try {
+      const savedFavorites = localStorage.getItem("favorites")
+      return savedFavorites ? JSON.parse(savedFavorites) : []
+    } catch (error) {
+      console.error("Error al obtener los favoritos:", error)
+      return []
+    }
   })
 
   const toggleFavorite = (movie) => {
@@ -22,7 +27,11 @@ function App() {
   }
 
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites))
+    try {
+      localStorage.setItem("favorites", JSON.stringify(favorites))
+    } catch (error) {
+      console.error("Error al guardar los favoritos:", error)
+    }
   }, [favorites])
 
   return (

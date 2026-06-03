@@ -14,7 +14,7 @@ const MovieModal = ({ movie, onclose, favorites = [], toggleFavorite }) => {
                 <img src={backdropUrl} alt={movie.title} />
                 <div className="modal-content">
                     <h2>{movie.title}</h2>
-                    <p>{rating}</p>
+                    <p>{movie.rating}</p>
                     <p>{movie.overview}</p>
                     {toggleFavorite && (
                         <button onClick={() => toggleFavorite(movie)}>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "../../styles/MovieCard.css"
 
 const MovieCard = ({movie, onClick}) => {
@@ -15,6 +16,11 @@ const MovieCard = ({movie, onClick}) => {
             <div className="movie-info">
                 <h3>{movie.title}</h3>
                 <p>{rating}</p>
+                <Link className="movie-detail-link"
+                to={`/movie/${movie.id}`} 
+                onClick={e => e.stopPropagation()}>
+                    Details
+                </Link>
             </div>
         </article>
     )

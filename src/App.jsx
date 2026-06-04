@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 
 import Home from "./pages/Home.jsx"
 import FavoritesPage from "./pages/FavoritesPage.jsx"
+import MovieDetail from "./pages/MovieDetail.jsx"
 
 function App() {
   const [search, setSearch] = useState("")
@@ -57,6 +58,14 @@ function App() {
             toggleFavorite={toggleFavorite}
           />
         }
+      />
+      <Route
+        path="/movie/:id"
+        element={
+        <MovieDetail
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
+        />}
       />
     </Routes>
   )

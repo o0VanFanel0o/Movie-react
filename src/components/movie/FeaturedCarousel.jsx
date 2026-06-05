@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef} from "react"
 import {getTrendingMovies} from "../../services/api"
 import "../../styles/FeaturedCarousel.css"
 
@@ -7,6 +7,7 @@ const FeaturedCarousel = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
     const [activeIndex, setActiveIndex] = useState(0)
+    const trackRef = useRef(null)
 
     useEffect(() => {
         const fetchMovies = async() => {
@@ -31,9 +32,32 @@ const FeaturedCarousel = () => {
         return <p>{error}</p>
     }
     const activeMovie = movies[activeIndex]
+
+    const handleScroll = () => {
+        const track = trackRef.current
+        if (!track) return 
+        const trackCenter = track.getBoundingClientRect().left + track.offsetWidth / 2
+        const cards = track.querySelectorAll(".featured-card")
+
+        let closestIndex = 0
+        let closestDistance = Infinity
+
+        cards.forEach((card, index) => {
+            const cardCenter = card.getBoundingClientRect().left + card.offsetWidth / 2
+            const distance = Math.abs(trackCenter - cardCenter)
+
+            if (distance < closestDistance) {
+                closestDistance = distance
+                closestIndex = index
+            }
+        })
+        setActiveIndex(closestIndex)
+    }
+
+
     return (
         <section className="featured-carousel">
-            <div className="featured-track">
+            <div className="featured-track" ref={trackRef} onScroll={handleScroll}>
                 {movies.map((movie, index) => (
                     <article className={`featured-card ${index === activeIndex ? "active" : ""}`} key={movie.id}
                         onClick={() => setActiveIndex(index)}>

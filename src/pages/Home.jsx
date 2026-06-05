@@ -1,16 +1,24 @@
-import TrendingCarrusel from "../components/movie/TrendingCarrusel.jsx";
 import FloatingNav from "../components/navigation/FloatingNav.jsx";
+import FeaturedCarousel from "../components/movie/FeaturedCarousel.jsx"
+import RandomSynopsis from "../components/movie/RandomSynopsis.jsx";
 
 
 import "../styles/home.css";
 
-const Home = ({search, setSearch, favorites, toggleFavorite}) => {
+const Home = ({search, setSearch, favorites}) => {
 
     return (
         <div className="home">
-            <h1>Movie Dashboard</h1>
-            <TrendingCarrusel search={search} favorites={favorites} toggleFavorite={toggleFavorite}/>
-            <FloatingNav search={search} setSearch={setSearch} favorites={favorites}/>
+            <header>
+                <h1>Movie Dashboard</h1>
+            </header>
+            <main className="home-main">
+                <FeaturedCarousel />
+            </main>
+            <footer className="home-bottom">
+                <RandomSynopsis />
+                <FloatingNav search={search} setSearch={setSearch} favorites={favorites}/>
+            </footer>
         </div>
     );
 };

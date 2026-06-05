@@ -1,0 +1,39 @@
+.featured-carousel {
+    width: 100%;
+    overflow: hidden;
+}
+
+.featured-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    padding: 12px 24px;
+}
+
+.featured-card {
+    flex: 0 0 60%;
+    max-width: 260px;
+    scroll-snap-align: center;
+}
+
+.featured-card img {
+    width: 100%;
+    display: block;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.featured-card {
+    flex: 0 0 60%;
+    max-width: 260px;
+    scroll-snap-align: center;
+    opacity: 0.65;
+    transform: scale(0.92);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.featured-card.active {
+    opacity: 1;
+    transform: scale(1);
+}

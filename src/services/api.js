@@ -27,3 +27,18 @@ export const getMovieDetails = async (movieId) => {
     }
     return response.json()
 }
+
+export const getRandomMovie = async () => {
+    const randomPage = Math.floor(Math.random() * 100) + 1
+    const response = await fetch(
+        `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&page=${randomPage}`
+    )
+    if (!response.ok) {
+        throw new Error("Failed to fetch")
+    }
+    const data = await response.json()
+    const movies = data.results
+    const randomIndex = Math.floor(Math.random() * movies.length)
+
+    return movies[randomIndex]
+}

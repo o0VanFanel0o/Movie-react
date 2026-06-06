@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef} from "react"
 import {getTrendingMovies} from "../../services/api"
+import { Link } from "react-router-dom"
 import "../../styles/FeaturedCarousel.css"
 
 const FeaturedCarousel = () => {
@@ -31,7 +32,6 @@ const FeaturedCarousel = () => {
     if(error) {
         return <p>{error}</p>
     }
-    const activeMovie = movies[activeIndex]
 
     const handleScroll = () => {
         const track = trackRef.current
@@ -60,20 +60,18 @@ const FeaturedCarousel = () => {
             <div className="featured-track" ref={trackRef} onScroll={handleScroll}>
                 {movies.map((movie, index) => (
                     <article className={`featured-card ${index === activeIndex ? "active" : ""}`} key={movie.id}
-                        onClick={() => setActiveIndex(index)}>
-                        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
-                        alt={movie.title} />
-
+                    onClick={() => setActiveIndex(index)}>
+                    <Link to={`/movie/${movie.id}`}>
+                            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+                            alt={movie.title} />
+                            <div className="featured-info">
+                                <h2>{movie.title}</h2>
+                                <p>{movie.vote_average?.toFixed(1)|| "N/A"}</p>
+                            </div>
+                    </Link>
                     </article>
                 ))}
             </div>
-            {activeMovie && (
-                <div className="featured-info">
-                    <h2>{activeMovie.title}</h2>
-                    <p>{activeMovie.vote_average?.toFixed(1)|| "N/A"}</p>
-                    <p>{activeMovie.overview || "No overview avalable."}</p>
-                </div>
-            )}
         </section>
     )
 }

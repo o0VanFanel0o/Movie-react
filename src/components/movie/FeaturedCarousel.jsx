@@ -61,12 +61,11 @@ const FeaturedCarousel = () => {
                 {movies.map((movie, index) => (
                     <article className={`featured-card ${index === activeIndex ? "active" : ""}`} key={movie.id}
                     onClick={() => setActiveIndex(index)}>
-                    <Link to={`/movie/${movie.id}`}>
+                    <Link to={`/movie/${movie.id}`} className="featured-card-link">
                             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
                             alt={movie.title} />
-                            <div className="featured-info">
-                                <h2>{movie.title}</h2>
-                                <p>{movie.vote_average?.toFixed(1)|| "N/A"}</p>
+                            <div className="featured-card-meta">
+                                <p>{movie.vote_average?.toFixed(1) || "N/A"} · {movie.release_date?.slice(0, 4) || "Unknown"}</p>
                             </div>
                     </Link>
                     </article>

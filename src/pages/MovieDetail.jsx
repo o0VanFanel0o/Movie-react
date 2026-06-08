@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getMovieDetails } from "../services/api";
 
+import "../styles/MovieDetail.css"
+
 const MovieDetail = ({ favorites = [], toggleFavorite }) => {
     const { id } = useParams();
 
@@ -34,6 +36,7 @@ const MovieDetail = ({ favorites = [], toggleFavorite }) => {
     if (!movie) return <div>No se encontró la película</div>;
 
     const posterUrl = movie.poster_path ? IMAGE_URL + movie.poster_path : "https://via.placeholder.com/150";
+    const heroImage = movie.backdrop_path ? `https://image.tmdb.org/t/p/w780${movie.backdrop_path}` : posterUrl;
     const rating = movie.vote_average ? movie.vote_average.toFixed(1) : "N/A";
     const year = movie.release_date ? movie.release_date.split("-")[0] : "N/A";
     const genres = movie.genres ? movie.genres.map(genre => genre.name).join(", ") : "N/A";
@@ -42,18 +45,19 @@ const MovieDetail = ({ favorites = [], toggleFavorite }) => {
 
     return (
         <main className="movie-detail">
-            <Link to="/" className="back-button">Back</Link>
-            <h1>Movie Detail</h1>
             <section className="movie-detail-content">
-                <img src={posterUrl} alt={movie.title} />
+                <img src={heroImage} alt={movie.title} className="movie-detail-hero-img"/>
+                <Link to="/" className="movie-detail-back">←</Link>
+                {toggleFavorite && (
+                    <button className="movie-detail-favorite" onClick={() => toggleFavorite(movie)}>{isFavorite ? "♥" : "♡"}</button>
+                )}
+            </section>
+            <section className="movie-detail-content">    
                 <h2>{movie.title}</h2>
                 <p><strong>Year:</strong> {year}</p>
                 <p><strong>Rating:</strong> {rating}</p>
                 <p><strong>Genres:</strong> {genres}</p>
-                <p><strong>Overview:</strong> {movie.overview} || "No overview available"</p>
-                {toggleFavorite && (
-                    <button onClick={() => toggleFavorite(movie)}>{isFavorite ? "Remove from Favorites" : "Add to Favorites"}</button>
-                )}
+                <p> {movie.overview} || "No overview available"</p>
             </section>
         </main>
     )

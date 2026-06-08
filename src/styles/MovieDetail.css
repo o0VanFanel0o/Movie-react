@@ -16,6 +16,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 20px;
 }
 
 .movie-detail-back,
@@ -45,10 +46,6 @@
 
 .movie-detail-favorite {
     right: 16px;
-}
-
-.movie-detail-content {
-    padding: 1rem;
 }
 
 .movie-detail-content h1 {

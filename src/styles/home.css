@@ -9,10 +9,15 @@ body {
 
 }
 .home{
+    padding-top: 1rem;
     min-height: 100vh;
-    padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     position: relative;
+}
+.home-main {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
 }

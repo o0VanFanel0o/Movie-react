@@ -9,12 +9,12 @@
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
-    padding: 12px 24px;
+    padding: 12px 8px;
 }
 
 .featured-card {
-    flex: 0 0 60%;
-    max-width: 260px;
+    flex: 0 0 72%;
+    max-width: 320px;
     scroll-snap-align: center;
     opacity: 0.65;
     transform: scale(0.92);

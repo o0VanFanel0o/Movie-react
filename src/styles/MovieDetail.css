@@ -1,6 +1,6 @@
 .movie-detail {
     min-height: 100svh;
-    background: #111;
+    background: var(--color-bg);
     color: white;
 }
 
@@ -23,6 +23,7 @@
 .movie-detail-favorite {
     position: absolute;
     top: 16px;
+    z-index: 2;
 
     width: 42px;
     height: 42px;
@@ -56,4 +57,36 @@
 .movie-detail-content p {
     margin: 0.5rem 0;
     line-height: 1.5;
+}
+.movie-detail-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.15),
+        transparent
+    );
+}
+
+.movie-detail-hero-info {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 18px;
+    z-index: 1;
+}
+
+.movie-detail-hero-info h1 {
+    margin: 0 0 6px;
+    font-size: 1.6rem;
+    line-height: 1.1;
+}
+
+.movie-detail-hero-info p {
+    margin: 4px 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
 }

@@ -45,18 +45,20 @@ const MovieDetail = ({ favorites = [], toggleFavorite }) => {
 
     return (
         <main className="movie-detail">
-            <section className="movie-detail-content">
+            <section className="movie-detail-hero">
                 <img src={heroImage} alt={movie.title} className="movie-detail-hero-img"/>
                 <Link to="/" className="movie-detail-back">←</Link>
                 {toggleFavorite && (
                     <button className="movie-detail-favorite" onClick={() => toggleFavorite(movie)}>{isFavorite ? "♥" : "♡"}</button>
                 )}
+                <div className="movie-detail-hero-info">
+                    <h2>{movie.title}</h2>
+                    <p><strong>Year:</strong> {year}</p>
+                    <p><strong>Rating:</strong> {rating}</p>
+                    <p><strong>Genres:</strong> {genres}</p>
+                </div>
             </section>
             <section className="movie-detail-content">    
-                <h2>{movie.title}</h2>
-                <p><strong>Year:</strong> {year}</p>
-                <p><strong>Rating:</strong> {rating}</p>
-                <p><strong>Genres:</strong> {genres}</p>
                 <p> {movie.overview} || "No overview available"</p>
             </section>
         </main>

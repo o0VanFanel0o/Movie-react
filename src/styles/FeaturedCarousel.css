@@ -39,6 +39,12 @@
     width: 100%;
     display: block;
     object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.25s ease;
+}
+
+.featured-card.active img {
+    filter: grayscale(0);
 }
 
 .featured-card-meta {

@@ -10,6 +10,29 @@ export const getTrendingMovies = async () => {
     return data.results
 }
 
+export const getPopularMovies = async() => {
+    const response = await fetch(
+        `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US`
+    )
+    if (!response.ok) {
+        throw new Error("Error al obtener los detalles de la película")
+    }
+    const data = await response.json()
+    return data.results
+}
+
+export const getTopRatedMovies = async() => {
+    const response = await fetch(
+        `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US`
+    )
+    if (!response.ok) {
+        throw new Error("Error al obtener los detalles de la película")
+    }
+
+    const data = await response.json()
+    return data.results
+}
+
 export const searchMovies = async (query) => {
     const response = await fetch(
         `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`

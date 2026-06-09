@@ -1,9 +1,13 @@
 import { useEffect, useState, useRef} from "react"
-import {getTrendingMovies} from "../../services/api"
+import {
+    getTrendingMovies,
+    getPopularMovies,
+    getTopRatedMovies
+} from "../../services/api"
 import { Link } from "react-router-dom"
 import "../../styles/FeaturedCarousel.css"
 
-const FeaturedCarousel = () => {
+const FeaturedCarousel = ({selectedList}) => {
     const [movies, setMovies] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
@@ -15,8 +19,19 @@ const FeaturedCarousel = () => {
             try{
                 setLoading(true)
                 setError("")
-                const trendingMovies = await getTrendingMovies()
-                setMovies(trendingMovies)
+
+                let moviesData
+
+                if (selectedList === "popular"){
+                    moviesData = await getPopularMovies()
+                }else if (selectedList === "topRated") {
+                    moviesData = await getTopRatedMovies()
+                }else {
+                    moviesData = await getTrendingMovies()
+                }
+                
+                setMovies(moviesData)
+                setActiveIndex(0)
             }catch(error) {
                 console.error("Error loading featured movies: ",error)
                 setError("Something went wrong while loading featured movies")
@@ -25,7 +40,7 @@ const FeaturedCarousel = () => {
             }
         }
         fetchMovies()
-    }, [])
+    }, [selectedList])
     if(loading) {
         return <p>Loading featured movies</p>
     }

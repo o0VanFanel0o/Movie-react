@@ -18,18 +18,41 @@ const Home = ({search, setSearch, favorites}) => {
             <main className="home-main">
                 <FeaturedCarousel selectedList={selectedList}/>
             </main>
-            <div className="movie-list-tabs">
-                <button className={selectedList === "trending" ? "active" : ""} onClick={() => setSelectedList("trending")}>
-                    Trending
-                </button>
-                <button className={selectedList === "popular" ? "active" : ""} onClick={() => setSelectedList("popular")}>
-                    Popular
-                </button>
-                <button className={selectedList === "topReated" ? "active" : ""}onClick={() => setSelectedList("topRated")}>
-                    Top Rated
-                </button>
+
+            <div className="radio-inputs">
+                <label className="radio">
+                    <input
+                        type="radio"
+                        name="movie-list"
+                        value="trending"
+                        checked={selectedList === "trending"}
+                        onChange={() => setSelectedList("trending")}
+                    />
+                    <span className="name">Trending</span>
+                </label>
+                <label className="radio">
+                    <input
+                        type="radio"
+                        name="movie-list"
+                        value="popular"
+                        checked={selectedList === "popular"}
+                        onChange={() => setSelectedList("popular")}
+                    />
+                    <span className="name">Popular</span>
+                </label>
+                <label className="radio">
+                    <input
+                        type="radio"
+                        name="movie-list"
+                        value="topRated"
+                        checked={selectedList === "topRated"}
+                        onChange={() => setSelectedList("topRated")}
+                    />
+                    <span className="name">Top Rated</span>
+                </label>
             </div>
             <footer className="home-bottom">
+                <h3>If you feel curious...</h3>
                 <RandomSynopsis />
                 <FloatingNav search={search} setSearch={setSearch} favorites={favorites}/>
             </footer>

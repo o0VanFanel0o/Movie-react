@@ -12,8 +12,18 @@ const Home = ({search, setSearch, favorites}) => {
 
     return (
         <div className="home">
-            <header>
-                <h1>Movie Dashboard</h1>
+            <header className="home-header">
+                <div className="home-brand">
+                    <span className="brand-mark">M</span>
+                    <span className="brand-name">Movie dashboard</span>
+                </div>
+                <a className="profile-avatar"
+                    href="https://github.com/o0VanFanel0o"
+                    target="_blank"
+                    rel="noreferrer">
+                    <span>AG</span>
+                </a>
+
             </header>
             <main className="home-main">
                 <FeaturedCarousel selectedList={selectedList}/>

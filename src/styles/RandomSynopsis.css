@@ -1,10 +1,14 @@
 .random-synopsis {
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    max-height: 28svh;
-}
+    display: block;
+    margin: 0 20px 20px;
+    padding: 16px;
+    border-radius: 20px;
+    text-decoration: none;
 
+    background: var(--color-blue);
+    color: whitesmoke;
+    box-shadow: 0 10px 30px var(--color-shadow, rgba(0, 0, 0, 0.08));
+}
 .random-synopsis p {
     display: -webkit-box;
     line-clamp: 6;

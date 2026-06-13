@@ -35,7 +35,8 @@ const RandomSynopsis = () => {
     }
     return(
         <Link to={`/movie/${movie.id}`} className="random-synopsis">
-        <p>{movie.overview || "No overview available."}</p>
+            <span className="random-synopsis-label"><h3>If you feel curious...</h3></span>
+            <p className="random-synopsis-text">{movie.overview || "No overview available."}</p>
         </Link>
     )
 }

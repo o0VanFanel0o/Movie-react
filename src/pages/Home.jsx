@@ -62,7 +62,6 @@ const Home = ({search, setSearch, favorites}) => {
                 </label>
             </div>
             <footer className="home-bottom">
-                <h3>If you feel curious...</h3>
                 <RandomSynopsis />
                 <FloatingNav search={search} setSearch={setSearch} favorites={favorites}/>
             </footer>

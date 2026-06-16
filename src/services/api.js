@@ -43,7 +43,7 @@ export const searchMovies = async (query) => {
 
 export const getMovieDetails = async (movieId) => {
     const response = await fetch(
-        `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`
+        `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=credits,videos`
     )
     if (!response.ok) {
         throw new Error("Error al obtener los detalles de la película")

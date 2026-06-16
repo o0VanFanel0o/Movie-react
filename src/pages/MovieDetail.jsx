@@ -41,7 +41,9 @@ const MovieDetail = ({ favorites = [], toggleFavorite }) => {
     const year = movie.release_date ? movie.release_date.split("-")[0] : "N/A";
     const genres = movie.genres ? movie.genres.map(genre => genre.name).join(", ") : "N/A";
     const isFavorite = favorites.some(favorite => favorite.id === movie.id);
-
+    const cast = movie.credits?.cast?.slice(0,6) || []
+    const PROFILE_URL = "https://image.tmdb.org/t/p/w185"
+    const FALLBACK_PROFILE = "https://placehold.co/185x278?text=No+Photo"
 
     return (
         <main className="movie-detail">
@@ -60,6 +62,20 @@ const MovieDetail = ({ favorites = [], toggleFavorite }) => {
             </section>
             <section className="movie-detail-content">    
                 <p> {movie.overview} || "No overview available"</p>
+            </section>
+            <section className="movie-cast">
+                <h2>Cast</h2>
+                <div className="cast-list">
+                    {cast.map((actor) => (
+                        <article className="cast-card" key={actor.id}>
+                            <img
+                                src={actor.profile_path ? `${PROFILE_URL}${actor.profile_path}` : FALLBACK_PROFILE}
+                                alt={actor.name}
+                            />
+                            <p>{actor.name}</p>
+                        </article>
+                    ))}
+                </div>
             </section>
         </main>
     )

@@ -90,3 +90,43 @@
     color: var(--color-muted);
     font-size: 0.9rem;
 }
+
+.movie-detail-content {
+    padding: 1rem 16px;
+}
+
+.movie-cast {
+    padding: 0 16px 2rem;
+}
+
+.movie-cast h2 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.cast-list {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.cast-card {
+    flex: 0 0 100px;
+    text-align: center;
+}
+
+.cast-card img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    background: var(--color-button-back, #333);
+}
+
+.cast-card p {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+}

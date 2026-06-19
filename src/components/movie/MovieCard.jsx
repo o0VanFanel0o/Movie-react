@@ -3,7 +3,7 @@ import "../../styles/MovieCard.css"
 
 const MovieCard = ({movie, onClick}) => {
     const IMAGE_URL = "https://image.tmdb.org/t/p/w500"
-    const FALLBACK_IMAGE = "https://via.placeholder.co/500x750?text=No+Image"
+    const FALLBACK_IMAGE = "https://via.placeholder.com/500x750?text=No+Image"
     const posterUrl = movie.poster_path ? `${IMAGE_URL}${movie.poster_path}` : FALLBACK_IMAGE
     const rating = movie.vote_average ? movie.vote_average.toFixed(1):"N/A"
     return (

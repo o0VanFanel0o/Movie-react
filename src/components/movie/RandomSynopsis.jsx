@@ -31,12 +31,12 @@ const RandomSynopsis = () => {
         return <p>{error}</p>
     }
     if (!movie) {
-        return <p>No synompsis avalable</p>
+        return <p>No synopsis avalable</p>
     }
     return(
         <Link to={`/movie/${movie.id}`} className="random-synopsis">
             <span className="random-synopsis-label"><h3>If you feel curious...</h3></span>
-            <p className="random-synopsis-text">{movie.overview || "No overview available."}</p>
+            <p className="random-synopsis-text">{movie.overview || "No synopsis available."}</p>
         </Link>
     )
 }

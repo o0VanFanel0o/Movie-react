@@ -35,7 +35,8 @@ const MovieDetail = ({ favorites = [], toggleFavorite }) => {
     if (error) return <div>Error: {error}</div>;
     if (!movie) return <div>No se encontró la película</div>;
 
-    const posterUrl = movie.poster_path ? IMAGE_URL + movie.poster_path : "https://via.placeholder.com/150";
+    const FALLBACK_POSTER = "https://placehold.co/500x750?text=No+Image"
+    const posterUrl = movie.poster_path ? IMAGE_URL + movie.poster_path : FALLBACK_POSTER
     const heroImage = movie.backdrop_path ? `https://image.tmdb.org/t/p/w780${movie.backdrop_path}` : posterUrl;
     const rating = movie.vote_average ? movie.vote_average.toFixed(1) : "N/A";
     const year = movie.release_date ? movie.release_date.split("-")[0] : "N/A";

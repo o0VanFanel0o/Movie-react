@@ -44,6 +44,8 @@ const MovieDetail = ({ favorites = [], toggleFavorite }) => {
     const cast = movie.credits?.cast?.slice(0,6) || []
     const PROFILE_URL = "https://image.tmdb.org/t/p/w185"
     const FALLBACK_PROFILE = "https://placehold.co/185x278?text=No+Photo"
+    const videos = movie.videos?.results || []
+    const trailer = videos.find((video) => video.site === "YouTube" && video.type === "Trailer")
 
     return (
         <main className="movie-detail">
@@ -61,7 +63,7 @@ const MovieDetail = ({ favorites = [], toggleFavorite }) => {
                 </div>
             </section>
             <section className="movie-detail-content">    
-                <p> {movie.overview} || "No overview available"</p>
+                <p> {movie.overview}</p>
             </section>
             <section className="movie-cast">
                 <h2>Cast</h2>
@@ -77,6 +79,16 @@ const MovieDetail = ({ favorites = [], toggleFavorite }) => {
                     ))}
                 </div>
             </section>
+            {trailer && (
+                <section className="movie-trailer">
+                    <h2>Trailer</h2>
+                    <iframe
+                        src={`https://www.youtube.com/embed/${trailer.key}`}
+                        title={trailer.name}
+                        allowFullScreen
+                    ></iframe>
+                </section>
+            )}
         </main>
     )
 }

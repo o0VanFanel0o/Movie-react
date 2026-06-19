@@ -18,15 +18,15 @@ function App() {
   })
 
   const toggleFavorite = (movie) => {
-    const exists = favorites.some((fav) => fav.id === movie.id)
+    setFavorites((currentFavorites) => {
+      const exists = currentFavorites.some((fav) => fav.id === movie.id)
 
-    if (exists) {
-      setFavorites(favorites.filter((fav) => fav.id !== movie.id))
-    } else {
-      setFavorites([...favorites, movie])
-    }
+      if (exists) {
+        return currentFavorites.filter((fav) => fav.id !== movie.id)
+      }
+        return[...currentFavorites, movie]
+    })
   }
-
   useEffect(() => {
     try {
       localStorage.setItem("favorites", JSON.stringify(favorites))

@@ -92,11 +92,20 @@
 }
 
 .movie-detail-content {
-    padding: 1rem 16px;
+    background-color: var(--color-blue-back);
+    display: block;
+    margin: 20px 20px 20px;
+    padding: 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    background: var(--color-blue-back);
+    color: whitesmoke;
+    box-shadow: 0 10px 30px var(--color-shadow, rgba(0, 0, 0, 0.08));
 }
 
 .movie-cast {
     padding: 0 16px 2rem;
+    background-color: var(--color-button-back);
 }
 
 .movie-cast h2 {
@@ -109,6 +118,9 @@
     gap: 1rem;
     overflow-x: auto;
     padding-bottom: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-button);
 }
 
 .cast-card {

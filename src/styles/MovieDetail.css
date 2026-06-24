@@ -142,3 +142,13 @@
     font-size: 0.85rem;
     color: var(--color-muted);
 }
+.movie-trailer {
+    padding: 20px;
+}
+.movie-trailer iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: 18px;
+    display: block;
+}

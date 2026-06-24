@@ -82,7 +82,6 @@ const MovieDetail = ({ favorites = [], toggleFavorite }) => {
             </section>
             {trailer && (
                 <section className="movie-trailer">
-                    <h2>Trailer</h2>
                     <iframe
                         src={`https://www.youtube.com/embed/${trailer.key}`}
                         title={trailer.name}

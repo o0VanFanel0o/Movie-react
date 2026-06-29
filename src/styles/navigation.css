@@ -3,6 +3,7 @@
     bottom: 40px;
     right: 0;
     z-index: 50;
+    font-family: inherit;
 }
 
 .nav-toggle {
@@ -11,8 +12,16 @@
     border-radius: 999px 0 0 999px;
     border: none;
     cursor: pointer;
-    background-color: darkslategrey;
+    background: rgba(47, 79, 79, 0.92);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
     color: white;
+    font-size: 1.25rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-toggle:hover {
+    background: rgba(61, 99, 99, 0.98);
+    transform: translateX(-4px);
 }
 
 .nav-panel {
@@ -24,7 +33,13 @@
     flex-direction: column;
     gap: 10px;
 
-    background-color: darkslategrey;
+    width: min(230px, calc(100vw - 24px));
+    background: rgba(47, 79, 79, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-right: none;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
     padding: 1rem;
     border-radius: 20px 0 0 20px;
 
@@ -39,8 +54,80 @@
 .floating-nav.open .nav-toggle {
     display: none;
 }
+
+.nav-link,
+.nav-action {
+    width: 100%;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-action:hover {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.38);
+    color: #f5d36b;
+    transform: translateY(-1px);
+}
+
+.nav-link:focus-visible,
+.nav-action:focus-visible,
+.nav-toggle:focus-visible,
+.nav-close:focus-visible,
+.search-bar input:focus-visible {
+    outline: 3px solid rgba(245, 211, 107, 0.8);
+    outline-offset: 2px;
+}
+
 .nav-close {
     align-self: flex-end;
+    width: 34px;
+    height: 34px;
     border: none;
+    border-radius: 999px;
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.16);
+    color: white;
+    font-size: 1.35rem;
+    line-height: 1;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-close:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: rotate(90deg);
+}
+
+.nav-panel .search-bar {
+    width: 100%;
+}
+
+.nav-panel .search-bar input {
+    width: 100%;
+    min-height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #163232;
+    font: inherit;
+    padding: 0 12px;
+}
+
+.nav-panel .search-bar input::placeholder {
+    color: rgba(22, 50, 50, 0.62);
 }

@@ -29,8 +29,8 @@ const FloatingNav = ({search, setSearch, favorites}) => {
                 >
                     ×
                 </button>
-                <Link to="/" className="nav-link">
-                    <button>Home</button>
+                <Link to="/" className="nav-link" onClick={() => setIsOpen(false)}>
+                    Home
                 </Link>
                 <button
                     className="nav-action"

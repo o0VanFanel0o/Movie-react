@@ -12,23 +12,39 @@ const FloatingNav = ({search, setSearch, favorites}) => {
 
     return (
         <nav className={`floating-nav ${isOpen ? "open" : ""}`}>
-            <button className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
-                ☰
-            </button>
-            <div className="nav-panel">
-                <button className="nav-close" onClick={() => setIsOpen(false)}>
-                X
+                <button
+                    className="nav-toggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    ☰
                 </button>
-                <Link to="/">
+                <div className="nav-panel">
+                <button
+                    className="nav-close"
+                    type="button"
+                    aria-label="Close navigation menu"
+                    onClick={() => setIsOpen(false)}
+                >
+                    ×
+                </button>
+                <Link to="/" className="nav-link">
                     <button>Home</button>
                 </Link>
-                <button onClick={() => setShowSearch(! showSearch)}>Buscar</button>
-                <Favorites favorites={favorites}/>
+                <button
+                    className="nav-action"
+                    type="button"
+                    onClick={() => setShowSearch(!showSearch)}
+                >
+                    Buscar
+                </button>
                 {
                     showSearch && (
                         <SearchBar search={search} setSearch={setSearch}/>
                     )
                 }
+                <Favorites favorites={favorites}/>
             </div>
         </nav>
     );

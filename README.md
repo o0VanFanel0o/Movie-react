@@ -21,7 +21,7 @@ El proyecto está pensado como una práctica real de frontend: consumir datos ex
 
 ## Vista previa
 
-[![Movie React Dashboard Demo](./assets/Captura.png)](TU_LINK_DEL_VIDEO)
+[![Movie React Dashboard Demo](./src/assets/Captura.png)](TU_LINK_DEL_VIDEO)
 
 ---
 

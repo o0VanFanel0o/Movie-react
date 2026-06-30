@@ -17,6 +17,11 @@ El proyecto está pensado como una práctica real de frontend: consumir datos ex
 ## Video demo
 
 [Ver video demo](https://youtu.be/UJ56ZaJAqoE)
+---
+
+## Vista previa
+
+[![Movie React Dashboard Demo](./assets/Captura.png)](TU_LINK_DEL_VIDEO)
 
 ---
 

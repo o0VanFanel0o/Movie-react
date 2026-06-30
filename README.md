@@ -16,13 +16,7 @@ El proyecto está pensado como una práctica real de frontend: consumir datos ex
 
 ## Video demo
 
-Próximamente se agregará un video corto mostrando las principales funcionalidades del proyecto.
-
----
-
-## Vista previa
-
-Próximamente se agregará una captura o GIF del proyecto.
+[Ver video demo](https://youtu.be/UJ56ZaJAqoE)
 
 ---
 

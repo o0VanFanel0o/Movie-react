@@ -16,7 +16,7 @@ El proyecto está pensado como una práctica real de frontend: consumir datos ex
 
 ## Video demo
 
-[Ver video demo](https://youtu.be/UJ56ZaJAqoE)
+[![Ver demo de Movie React](https://img.youtube.com/vi/UJ56ZaJAqoE/hqdefault.jpg)](https://youtu.be/UJ56ZaJAqoE)
 ---
 
 ## Vista previa
